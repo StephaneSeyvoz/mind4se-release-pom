@@ -3,121 +3,140 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
+    <!--parent>
         <groupId>org.ow2.mind</groupId>
         <artifactId>mind-parent</artifactId>
         <version>6</version>
-    </parent>
+    </parent-->
 
+    <groupId>org.ow2.mind</groupId>
     <artifactId>mind4se-compiler</artifactId>
     <version>2.1-SNAPSHOT</version>
-    <name>Mind4se compiler</name>
+    <name>MIND4SE compiler</name>
     <packaging>pom</packaging>
 
     <description>
-      Mind compiler is the tool-set that support the development of 
-      component-based software written with the Mind programming model.
+      MIND4SE compiler is the tool-set that support the development of 
+      component-based software written with the Mind programming model
+      for Schneider Electric purposes.
     </description>
-
-    <!--url>http://mind.ow2.org/mindc-${project.version}/</url>
-
-    <licenses>
-        <license>
-            <name>LGPL</name>
-            <url>http://www.gnu.org/licenses/lgpl-3.0.txt</url>
-        </license>
-    </licenses-->
-
-    <modules>
-        <module>mind-compiler</module>
-        <module>Optimization-Backend/adl-frontend-static</module>
-        <module>single-interface-plugin</module>
-        <module>Optimization-Backend/cpl-preproc-static</module>
-        <module>Optimization-Backend/adl-backend-static</module>
-        <module>global-extensions/ext-parser</module>
-        <module>global-extensions/global-extensions</module>
-        <module>dumpdot-annotation</module>
-        <module>mindot-viewer</module>
-        <module>mindunit/mindunit-runtime</module>
-        <module>mindunit/mindunit</module>
-        <module>iar-extension</module>
-        <module>garbage-composite-annotation</module>
-    </modules>
-
-    <!--developers>
-        <developer>
-            <id>valeriebertin</id>
-            <name>Valerie Bertin</name>
-            <email>valerie.bertin@st.com</email>
-            <organization>STMicroelectronics</organization>
-        </developer>
-        <developer>
-            <id>ozcan</id>
-            <name>Ali-Erdem Ozcan</name>
-            <email>ali-erdem.ozcan@st.com</email>
-            <organization>STMicroelectronics</organization>
-        </developer>
-        <developer>
-            <id>leclercq</id>
-            <name>Matthieu Leclercq</name>
-            <email>matthieu.leclercq@st.com</email>
-            <organization>STMicroelectronics</organization>
-        </developer>
-        <developer>
-            <id>annema</id>
-            <name>Matthieu Anne</name>
-            <email>matthieu.anne@orange-ftgroup.com</email>
-            <organization>Orange Labs</organization>
-        </developer>
-        <developer>
-            <id>chomats</id>
-            <name>Stephane Chomat</name>
-            <email>stephane.chomat@imag.fr</email>
-            <organization>LIG Adele</organization>
-        </developer>
-        <developer>
-            <id>deruyter</id>
-            <name>Thomas Deruyter</name>
-            <email>thomas.deruyter@st.com</email>
-            <organization>STMicroelectronics</organization>
-        </developer>
-        <developer>
-            <id>seyvozs</id>
-            <name>Stephane Seyvoz</name>
-            <email>sseyvoz@assystem.com</email>
-            <organization>Assystem</organization>
-        </developer>
-    </developers>
-
-    <contributors>
-    </contributors>
-
-    <ciManagement>
-        <system>bamboo</system>
-        <url>http://bamboo.ow2.org/browse/MIND-MINDC</url>
-    </ciManagement-->
-
+    
     <properties>
-        <!--
-            The version of the fractal-adl artifacts which this tool-set depends
-            on
-        -->
-        <fractaladl.dependencies.version>2.6.1</fractaladl.dependencies.version>
-        <!-- By default run tests for groups "functional" and "checkin" -->
-        <test.groups>functional, checkin</test.groups>
+        <release.promotion>alpha</release.promotion>
+        <maven.build.timestamp.format>yyyyMMdd</maven.build.timestamp.format>
+        <release.buildNumber>${maven.build.timestamp}</release.buildNumber>
     </properties>
 
-    <!--scm>
-        <connection>scm:git:https://github.com/MIND-Tools/mind-compiler.git</connection>
-        <developerConnection>scm:git:https://github.com/MIND-Tools/mind-compiler.git</developerConnection>
-        <url>https://github.com/MIND-Tools/mind-compiler</url>
-    </scm-->
+    <modules>
+        <module>../mind-compiler</module>
+        <module>../Optimization-Backend/adl-frontend-static</module>
+        <module>../single-interface-plugin</module>
+        <module>../Optimization-Backend/cpl-preproc-static</module>
+        <module>../Optimization-Backend/adl-backend-static</module>
+        <module>../global-extensions/ext-parser</module>
+        <module>../global-extensions/global-extensions</module>
+        <module>../dumpdot-annotation</module>
+        <module>../mindot-viewer</module>
+        <module>../mindunit/mindunit-runtime</module>
+        <module>../mindunit/mindunit</module>
+        <module>../iar-extension</module>
+        <module>../garbage-composite-annotation</module>
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>mindc</artifactId>
+            <version>${project.version}</version>
+            <classifier>bin</classifier>
+            <type>zip</type>
+        </dependency>
+        
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>adl-frontend-static</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>single-interface-plugin</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>cpl-preproc-static</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>adl-backend-static</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>ext-parser</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>global-extensions</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>dumpdot-annotation</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>mindot-viewer</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>mindunit</artifactId>
+            <version>${project.version}</version>
+            <classifier>bin</classifier>
+            <type>zip</type>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>iar-extension</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+        
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>garbage-composite-annotation</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+
+    </dependencies>
 
     <dependencyManagement>
         <dependencies>
 
             <!-- Sub-modules dependencies. This avoid to specify versions in sub-poms -->
-            <dependency>
+            <!--dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>mind-compiler</artifactId>
                 <version>${project.version}</version>
@@ -175,7 +194,7 @@
                 <groupId>${project.groupId}</groupId>
                 <artifactId>mindunit-runtime</artifactId>
                 <version>${project.version}</version>
-            </dependency>
+            </dependency!>
 
             <dependency>
                 <groupId>${project.groupId}</groupId>
@@ -193,7 +212,7 @@
                 <groupId>${project.groupId}</groupId>
                 <artifactId>garbage-composite-annotation</artifactId>
                 <version>${project.version}</version>
-            </dependency>
+            </dependency-->
 
             <!--dependency>
                 <groupId>${project.groupId}</groupId>
@@ -590,6 +609,43 @@
             	</executions>
             </plugin>
             
+            <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>prepare-runtime</id>
+                        <goals>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <excludeTransitive>true</excludeTransitive>
+                            <classifier>bin</classifier>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <descriptors>
+                        <descriptor>src/assemble/bin-release.xml</descriptor>
+                     </descriptors>
+                    <finalName>${project.build.finalName}-${release.buildNumber}-${release.promotion}</finalName>
+                    <appendAssemblyId>true</appendAssemblyId>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id> <!-- this is used for inheritance merges -->
+                        <phase>package</phase> <!-- bind to the packaging phase -->
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
 
         <pluginManagement>

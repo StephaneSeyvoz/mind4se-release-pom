@@ -1,0 +1,70 @@
+<assembly
+    xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2 http://maven.apache.org/xsd/assembly-1.1.2.xsd">
+    
+    <id>bin</id>
+    
+    <formats>
+        <!--format>dir</format-->
+        <format>zip</format>
+        <format>tar.gz</format>
+        <format>tar.bz2</format>
+    </formats>
+    <includeBaseDirectory>true</includeBaseDirectory>
+    <!--baseDirectory>${project.build.finalName}-${release.buildNumber}-${release.promotion}</baseDirectory-->
+    
+    <dependencySets>
+        <dependencySet>
+            <useTransitiveDependencies>false</useTransitiveDependencies>
+            <outputDirectory>ext</outputDirectory>
+            <includes>
+                <include>${project.groupId}:adl-frontend-static</include>
+                <include>${project.groupId}:single-interface-plugin</include>
+                <include>${project.groupId}:cpl-preproc-static</include>
+                <include>${project.groupId}:adl-backend-static</include>
+                <include>${project.groupId}:ext-parser</include>
+                <include>${project.groupId}:global-extensions</include>
+                <include>${project.groupId}:dumpdot-annotation</include>
+                <include>${project.groupId}:iar-extension</include>
+                <include>${project.groupId}:garbage-composite-annotation</include>
+            </includes>
+            <fileMode>0644</fileMode>
+        </dependencySet>
+
+        <dependencySet>
+            <useTransitiveDependencies>false</useTransitiveDependencies>
+            <unpack>true</unpack>
+            <unpackOptions>
+                <excludes>
+                    <exclude>META-INF/**</exclude>
+                </excludes>
+            </unpackOptions>
+            <includes>
+                <include>${project.groupId}:mindot-viewer</include>
+            </includes>
+            <fileMode>0644</fileMode>
+        </dependencySet>
+
+    </dependencySets>
+ 
+    <fileSets>
+        <fileSet>
+            <directory>target/dependency/mindc-${project.version}</directory>
+            <outputDirectory />
+        </fileSet>
+        <fileSet>
+            <directory>target/dependency/mindunit-${project.version}</directory>
+            <outputDirectory />
+        </fileSet>
+    </fileSets>
+    
+    <files>
+        <file>
+            <source>src/assemble/resources/Factory.adl</source>
+            <outputDirectory>runtime</outputDirectory>
+            <fileMode>0644</fileMode>
+        </file>
+    </files>
+
+</assembly>
