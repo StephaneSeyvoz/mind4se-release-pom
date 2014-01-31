@@ -22,7 +22,7 @@
     </description>
     
     <properties>
-        <release.promotion>alpha</release.promotion>
+        <release.promotion>Alpha</release.promotion>
         <maven.build.timestamp.format>yyyyMMdd</maven.build.timestamp.format>
         <release.buildNumber>${maven.build.timestamp}</release.buildNumber>
     </properties>
@@ -367,7 +367,15 @@
             <url>scp://${ow2.hostname}${ow2.site.deploy.dir}/mindc-${project.version}</url>
         </site>
     </distributionManagement-->
-
+    
+    <pluginRepositories>
+        <pluginRepository>
+            <id>maestro-rel</id>
+            <name>Maestro releases</name>
+            <url>https://repo.maestrodev.com/archiva/repository/CollabNet.TeamForge.Plugins.releases</url>
+        </pluginRepository>
+    </pluginRepositories>
+  
     <build>
         <plugins>
             <plugin>
@@ -384,210 +392,7 @@
                     <preparationGoals>clean install</preparationGoals>
                 </configuration>
             </plugin>
-
-            <plugin>
-                <artifactId>maven-resources-plugin</artifactId>
-				<version>2.5</version>
-                <inherited>false</inherited>
-                <executions>
-                    <execution>
-                        <id>copy-docbook-resources</id>
-                        <!-- here the phase you need -->
-                        <phase>pre-site</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <inherited>false</inherited>
-                        <configuration>
-                            <outputDirectory>${project.build.directory}/site/images</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>${basedir}/src/docbkx/devGuide/images</directory>
-                                </resource>
-                                <resource>
-                                    <directory>${basedir}/src/docbkx/userGuide/images</directory>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>com.agilejava.docbkx</groupId>
-                <artifactId>docbkx-maven-plugin</artifactId>
-                <inherited>false</inherited>
-                <executions>
-                    <execution>
-                        <id>pdf</id>
-                        <phase>pre-site</phase>
-                        <goals>
-                            <goal>generate-pdf</goal>
-                        </goals>
-                        <inherited>false</inherited>
-                        <configuration>
-                            <targetDirectory>${project.build.directory}/site</targetDirectory>
-                            <foCustomization>${basedir}/src/docbkx/xsl/minddoc-fo.xsl</foCustomization>
-                            <draftWatermarkImage>${basedir}/src/docbkx/images/draft.png</draftWatermarkImage>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>html-printable</id>
-                        <phase>pre-site</phase>
-                        <goals>
-                            <goal>generate-html</goal>
-                        </goals>
-                        <inherited>false</inherited>
-                        <configuration>
-                            <targetDirectory>${project.build.directory}/site/printable</targetDirectory>
-                            <imgSrcPath>../</imgSrcPath>
-                            <htmlCustomization>${basedir}/src/docbkx/xsl/minddoc-html-printable.xsl</htmlCustomization>
-                            <htmlStylesheet>../css/docbook-printable.css</htmlStylesheet>
-                        </configuration>
-                    </execution>
-                    <!-- User Guide HTML executions -->
-                    <execution>
-                        <id>userguide-html</id>
-                        <phase>pre-site</phase>
-                        <goals>
-                            <goal>generate-html</goal>
-                        </goals>
-                        <inherited>false</inherited>
-                        <configuration>
-                            <includes>mindc-user-guide.xml</includes>
-                            <targetDirectory>${project.build.directory}/site</targetDirectory>
-                            <htmlCustomization>${basedir}/src/docbkx/xsl/minddoc-html.xsl</htmlCustomization>
-                            <htmlStylesheet>css/docbook.css</htmlStylesheet>
-                            <customizationParameters>
-                                <parameter>
-                                    <name>root.path</name>
-                                    <value>.</value>
-                                </parameter>
-                                <parameter>
-                                    <name>pdf.link</name>
-                                    <value>mindc-user-guide.pdf</value>
-                                </parameter>
-                                <parameter>
-                                    <name>chunked.link</name>
-                                    <value>userGuide/mindc-user-guide.html</value>
-                                </parameter>
-                                <parameter>
-                                    <name>printable.link</name>
-                                    <value>printable/mindc-user-guide.html</value>
-                                </parameter>
-                            </customizationParameters>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>userguide-html-chunked</id>
-                        <phase>pre-site</phase>
-                        <goals>
-                            <goal>generate-html</goal>
-                        </goals>
-                        <inherited>false</inherited>
-                        <configuration>
-                            <includes>mindc-user-guide.xml</includes>
-                            <chunkedOutput>true</chunkedOutput>
-                            <targetDirectory>${project.build.directory}/site/userGuide</targetDirectory>
-                            <imgSrcPath>../</imgSrcPath>
-                            <htmlCustomization>${basedir}/src/docbkx/xsl/minddoc-chunk.xsl</htmlCustomization>
-                            <htmlStylesheet>../css/docbook-chunk.css</htmlStylesheet>
-                            <customizationParameters>
-                                <parameter>
-                                    <name>root.path</name>
-                                    <value>..</value>
-                                </parameter>
-                                <parameter>
-                                    <name>pdf.link</name>
-                                    <value>../mindc-user-guide.pdf</value>
-                                </parameter>
-                                <parameter>
-                                    <name>single.link</name>
-                                    <value>../mindc-user-guide.html</value>
-                                </parameter>
-                                <parameter>
-                                    <name>printable.link</name>
-                                    <value>../printable/mindc-user-guide.html</value>
-                                </parameter>
-                            </customizationParameters>
-                        </configuration>
-                    </execution>
-                    <!-- Dev Guide HTML executions -->
-                    <execution>
-                        <id>devguide-html</id>
-                        <phase>pre-site</phase>
-                        <goals>
-                            <goal>generate-html</goal>
-                        </goals>
-                        <inherited>false</inherited>
-                        <configuration>
-                            <includes>mindc-dev-guide.xml</includes>
-                            <targetDirectory>${project.build.directory}/site</targetDirectory>
-                            <htmlCustomization>${basedir}/src/docbkx/xsl/minddoc-html.xsl</htmlCustomization>
-                            <htmlStylesheet>css/docbook.css</htmlStylesheet>
-                            <customizationParameters>
-                                <parameter>
-                                    <name>root.path</name>
-                                    <value>.</value>
-                                </parameter>
-                                <parameter>
-                                    <name>pdf.link</name>
-                                    <value>mindc-dev-guide.pdf</value>
-                                </parameter>
-                                <parameter>
-                                    <name>chunked.link</name>
-                                    <value>devGuide/mindc-dev-guide.html</value>
-                                </parameter>
-                                <parameter>
-                                    <name>printable.link</name>
-                                    <value>printable/mindc-dev-guide.html</value>
-                                </parameter>
-                            </customizationParameters>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>devguide-html-chunked</id>
-                        <phase>pre-site</phase>
-                        <goals>
-                            <goal>generate-html</goal>
-                        </goals>
-                        <inherited>false</inherited>
-                        <configuration>
-                            <includes>mindc-dev-guide.xml</includes>
-                            <chunkedOutput>true</chunkedOutput>
-                            <targetDirectory>${project.build.directory}/site/devGuide</targetDirectory>
-                            <imgSrcPath>../</imgSrcPath>
-                            <htmlCustomization>${basedir}/src/docbkx/xsl/minddoc-chunk.xsl</htmlCustomization>
-                            <htmlStylesheet>../css/docbook-chunk.css</htmlStylesheet>
-                            <customizationParameters>
-                                <parameter>
-                                    <name>root.path</name>
-                                    <value>..</value>
-                                </parameter>
-                                <parameter>
-                                    <name>pdf.link</name>
-                                    <value>../mindc-dev-guide.pdf</value>
-                                </parameter>
-                                <parameter>
-                                    <name>single.link</name>
-                                    <value>../mindc-dev-guide.html</value>
-                                </parameter>
-                                <parameter>
-                                    <name>printable.link</name>
-                                    <value>../printable/mindc-dev-guide.html</value>
-                                </parameter>
-                            </customizationParameters>
-                        </configuration>
-                    </execution>
-                </executions>
-                <configuration>
-                    <targetDirectory>${project.build.directory}/site</targetDirectory>
-                    <xslthlConfig>${basedir}/src/docbkx/xsl/xslthl-config.xml</xslthlConfig>
-                    <highlightSource>1</highlightSource>
-                    <xincludeSupported>true</xincludeSupported>
-                </configuration>
-            </plugin>
-        
+            
             <!-- Add this plugin in parent POM to ensure that 
                  "factal-adl-bundle" artifact of type "bundle" is correctly
                  handled. -->
@@ -597,18 +402,7 @@
                 <version>2.0.1</version>
                 <extensions>true</extensions>
             </plugin>
-            <plugin>
-            	<artifactId>maven-source-plugin</artifactId>
-				<executions>
-            		<execution>
-            			<id>attach-sources</id>
-            			<goals>
-            				<goal>jar</goal>
-            			</goals>
-            		</execution>
-            	</executions>
-            </plugin>
-            
+                        
             <plugin>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <executions>
@@ -634,6 +428,7 @@
                         <descriptor>src/assemble/bin-release.xml</descriptor>
                      </descriptors>
                     <finalName>${project.build.finalName}-${release.buildNumber}-${release.promotion}</finalName>
+                    <!--finalName>${project.build.finalName}</finalName-->
                     <appendAssemblyId>true</appendAssemblyId>
                 </configuration>
                 <executions>
@@ -646,24 +441,38 @@
                     </execution>
                 </executions>
             </plugin>
+        
+            <plugin>
+                <groupId>com.maestrodev</groupId>
+                <artifactId>collabnet-maven-plugin</artifactId>
+                <version>1.1</version>
+                <configuration>
+                    <project>mind4se</project>
+                    <teamForgeUrl>https://teamforge.schneider-electric.com</teamForgeUrl>
+                    <teamForgeServerId>teamforge.schneider-electric</teamForgeServerId>
+                    <createRelease>true</createRelease>
+                    <pkg>test-mind4se</pkg>
+                    <packageDescription>${project.description}</packageDescription>
+                    <!--release>${project.build.finalName}-${release.buildNumber}-${release.promotion}</release-->
+                    <release>${project.build.finalName}</release>
+                    <!--releaseMaturity>${release.promotion}</releaseMaturity-->
+                    <releaseMaturity>Development Build</releaseMaturity>
+                    <releaseStatus>active</releaseStatus>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>deploy</id>
+                        <goals>
+                            <goal>deploy-to-releases</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+    
         </plugins>
 
         <pluginManagement>
-            <plugins>
-                <plugin>
-                    <artifactId>maven-jar-plugin</artifactId>
-                    <version>2.3</version>
-                    <configuration>
-                        <archive>
-                            <manifest>
-                                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-                                <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
-                            </manifest>
-                        </archive>
-                    </configuration>
-                    
-                </plugin>
-            
+            <plugins>            
                 <!-- By default run tests for groups "functional" and "checkin" -->
                 <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>
@@ -747,6 +556,7 @@
                     <artifactId>exec-maven-plugin</artifactId>
                     <version>1.1.1</version>
                 </plugin>
+                
                 <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
                 <plugin>
                 	<groupId>org.eclipse.m2e</groupId>
@@ -784,135 +594,4 @@
         </pluginManagement>
     </build>
 
-    <profiles>
-
-        <profile>
-            <id>release-profile</id>
-
-            <activation>
-                <property>
-                    <name>mindRelease</name>
-                    <value>true</value>
-                </property>
-            </activation>
-
-            <build>
-                <plugins>
-                    <plugin>
-                        <artifactId>maven-antrun-plugin</artifactId>
-                        <inherited>false</inherited>
-                        <executions>
-                            <execution>
-                                <id>update version link</id>
-                                <phase>site-deploy</phase>
-                                <goals>
-                                    <goal>run</goal>
-                                </goals>
-                                <inherited>false</inherited>
-                                <configuration>
-                                    <tasks>
-                                        <!--
-                                            This Ant task updates the 'mindc'
-                                            synbolic link to point to the new
-                                            version.
-                                        -->
-                                        <sshexec host="${ow2.hostname}" username="${ow2.username}" passphrase="" keyfile="${user.home}/.ssh/id_rsa" command="cd ${ow2.site.deploy.dir}; ln -nfs mindc-${project.version} mindc" />
-                                    </tasks>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-
-            <reporting>
-                <plugins>
-                    <!-- PMD reports -->
-                    <plugin>
-                        <artifactId>maven-pmd-plugin</artifactId>
-                        <version>2.4</version>
-                        <configuration>
-                            <excludes>
-                                <!--
-                                    exclude JavaFactory classes generated by the
-                                    fractalADL StaticJavaGenerator in the
-                                    cecilia-adl module.
-                                -->
-                                <exclude>**/*JavaFactory.java</exclude>
-                                <!-- exclude parser generated by JavaCC -->
-                                <exclude>
-                                    org/ow2/mind/**/jtb/**/*.java
-                                </exclude>
-                                <!-- exclude parser generated by antlr -->
-                                <exclude>
-                                    org/ow2/mind/preproc/parser/*.java
-                                </exclude>
-                            </excludes>
-                            <targetJdk>1.5</targetJdk>
-                        </configuration>
-                    </plugin>
-
-                    <!-- javadoc -->
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-javadoc-plugin</artifactId>
-                        <version>2.6.1</version>
-                        <configuration>
-                            <windowtitle>${project.name} Documentation</windowtitle>
-                            <doctitle>
-                                ${project.name} ${project.version}
-                                Documentation
-                            </doctitle>
-                            <docfilessubdirs>true</docfilessubdirs>
-                            <excludedocfilessubdir>.svn</excludedocfilessubdir>
-                            <links>
-                                <link>
-                                    http://java.sun.com/j2se/1.5/docs/api
-                                </link>
-                                <link>
-                                    http://fractal.objectweb.org/current/doc/javadoc/fractal
-                                </link>
-                                <link>
-                                    http://fractal.objectweb.org/current/doc/javadoc/fractal-adl
-                                </link>
-                            </links>
-                            <quiet>true</quiet>
-                        </configuration>
-                        <reportSets>
-                            <reportSet>
-                                <id>aggregrate</id>
-                                <reports>
-                                    <report>aggregate</report>
-                                </reports>
-                                <inherited>false</inherited>
-                            </reportSet>
-                            <reportSet>
-                                <id>single</id>
-                                <reports>
-                                    <report>javadoc</report>
-                                </reports>
-                                <inherited>true</inherited>
-                            </reportSet>
-                        </reportSets>
-                    </plugin>
-                </plugins>
-            </reporting>
-        </profile>
-
-        <profile>
-            <id>test-deploy</id>
-
-            <properties>
-                <ow2.hostname>localhost</ow2.hostname>
-                <ow2.site.deploy.dir>/tmp/mind/site</ow2.site.deploy.dir>
-            </properties>
-
-            <distributionManagement>
-                <site>
-                    <id>test</id>
-                    <url>file://${ow2.site.deploy.dir}/mindc-${project.version}</url>
-                </site>
-            </distributionManagement>
-        </profile>
-    </profiles>
 </project>
