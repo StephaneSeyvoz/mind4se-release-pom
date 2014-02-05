@@ -3,9 +3,9 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.ow2.mind</groupId>
+    <groupId>com.se.mind</groupId>
     <artifactId>mind4se-compiler</artifactId>
-    <version>2.1-SNAPSHOT</version>
+    <version>0.1-SNAPSHOT</version>
     <name>MIND4SE compiler</name>
     <packaging>pom</packaging>
 
@@ -16,8 +16,9 @@
     </description>
     
     <properties>
-        <release.promotion>Alpha</release.promotion>
         <maven.build.timestamp.format>yyyyMMdd</maven.build.timestamp.format>
+        <modules.common.version>2.1-SNAPSHOT</modules.common.version>
+        <release.promotion>Alpha</release.promotion>
         <release.buildNumber>${maven.build.timestamp}</release.buildNumber>
     </properties>
 
@@ -41,7 +42,7 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>mindc</artifactId>
-            <version>2.1-SNAPSHOT</version>
+            <version>${modules.common.version}</version>
             <classifier>bin</classifier>
             <type>zip</type>
         </dependency>
@@ -49,63 +50,63 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>adl-frontend-static</artifactId>
-            <version>2.1-SNAPSHOT</version>
+            <version>${modules.common.version}</version>
             <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>single-interface-plugin</artifactId>
-            <version>2.1-SNAPSHOT</version>
+            <version>${modules.common.version}</version>
             <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>cpl-preproc-static</artifactId>
-            <version>2.1-SNAPSHOT</version>
+            <version>${modules.common.version}</version>
             <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>adl-backend-static</artifactId>
-            <version>2.1-SNAPSHOT</version>
+            <version>${modules.common.version}</version>
             <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>ext-parser</artifactId>
-            <version>2.1-SNAPSHOT</version>
+            <version>${modules.common.version}</version>
             <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>global-extensions</artifactId>
-            <version>2.1-SNAPSHOT</version>
+            <version>${modules.common.version}</version>
             <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>dumpdot-annotation</artifactId>
-            <version>2.1-SNAPSHOT</version>
+            <version>${modules.common.version}</version>
             <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>mindot-viewer</artifactId>
-            <version>2.1-SNAPSHOT</version>
+            <version>${modules.common.version}</version>
             <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>mindunit</artifactId>
-            <version>2.1-SNAPSHOT</version>
+            <version>${modules.common.version}</version>
             <classifier>bin</classifier>
             <type>zip</type>
         </dependency>
@@ -113,104 +114,19 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>iar-extension</artifactId>
-            <version>2.1-SNAPSHOT</version>
+            <version>${modules.common.version}</version>
             <type>jar</type>
         </dependency>
         
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>garbage-composite-annotation</artifactId>
-            <version>2.1-SNAPSHOT</version>
+            <version>${modules.common.version}</version>
             <type>jar</type>
         </dependency>
 
     </dependencies>
 
-    <dependencyManagement>
-        <dependencies>
-
-            <!-- Sub-modules dependencies. This avoid to specify versions in sub-poms -->
-            <!--dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>mind-compiler</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>adl-frontend-static</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>single-interface-plugin</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>cpl-preproc-static</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>adl-backend-static</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>ext-parser</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>global-extensions</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>dumpdot-annotation</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>mindot-viewer</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>mindunit-runtime</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>mindunit</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>iar-extension</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>garbage-composite-annotation</artifactId>
-                <version>${project.version}</version>
-            </dependency-->
-
-        </dependencies>
-    </dependencyManagement>
-    
     <pluginRepositories>
         <pluginRepository>
             <id>maestro-rel</id>
@@ -251,13 +167,12 @@
                         <descriptor>src/assemble/bin-release.xml</descriptor>
                      </descriptors>
                     <finalName>${project.build.finalName}-${release.buildNumber}-${release.promotion}</finalName>
-                    <!--finalName>${project.build.finalName}</finalName-->
                     <appendAssemblyId>true</appendAssemblyId>
                 </configuration>
                 <executions>
                     <execution>
-                        <id>make-assembly</id> <!-- this is used for inheritance merges -->
-                        <phase>package</phase> <!-- bind to the packaging phase -->
+                        <id>make-assembly</id>
+                        <phase>package</phase>
                         <goals>
                             <goal>single</goal>
                         </goals>
