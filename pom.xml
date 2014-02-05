@@ -17,6 +17,7 @@
     
     <properties>
         <maven.build.timestamp.format>yyyyMMdd</maven.build.timestamp.format>
+        <modules.common.groupid>org.ow2.mind</modules.common.groupid>
         <modules.common.version>2.1-SNAPSHOT</modules.common.version>
         <release.promotion>Alpha</release.promotion>
         <release.buildNumber>${maven.build.timestamp}</release.buildNumber>
@@ -40,7 +41,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>${project.groupId}</groupId>
+            <groupId>${modules.common.groupid}</groupId>
             <artifactId>mindc</artifactId>
             <version>${modules.common.version}</version>
             <classifier>bin</classifier>
@@ -48,63 +49,63 @@
         </dependency>
         
         <dependency>
-            <groupId>${project.groupId}</groupId>
+            <groupId>${modules.common.groupid}</groupId>
             <artifactId>adl-frontend-static</artifactId>
             <version>${modules.common.version}</version>
             <type>jar</type>
         </dependency>
 
         <dependency>
-            <groupId>${project.groupId}</groupId>
+            <groupId>${modules.common.groupid}</groupId>
             <artifactId>single-interface-plugin</artifactId>
             <version>${modules.common.version}</version>
             <type>jar</type>
         </dependency>
 
         <dependency>
-            <groupId>${project.groupId}</groupId>
+            <groupId>${modules.common.groupid}</groupId>
             <artifactId>cpl-preproc-static</artifactId>
             <version>${modules.common.version}</version>
             <type>jar</type>
         </dependency>
 
         <dependency>
-            <groupId>${project.groupId}</groupId>
+            <groupId>${modules.common.groupid}</groupId>
             <artifactId>adl-backend-static</artifactId>
             <version>${modules.common.version}</version>
             <type>jar</type>
         </dependency>
 
         <dependency>
-            <groupId>${project.groupId}</groupId>
+            <groupId>${modules.common.groupid}</groupId>
             <artifactId>ext-parser</artifactId>
             <version>${modules.common.version}</version>
             <type>jar</type>
         </dependency>
 
         <dependency>
-            <groupId>${project.groupId}</groupId>
+            <groupId>${modules.common.groupid}</groupId>
             <artifactId>global-extensions</artifactId>
             <version>${modules.common.version}</version>
             <type>jar</type>
         </dependency>
 
         <dependency>
-            <groupId>${project.groupId}</groupId>
+            <groupId>${modules.common.groupid}</groupId>
             <artifactId>dumpdot-annotation</artifactId>
             <version>${modules.common.version}</version>
             <type>jar</type>
         </dependency>
 
         <dependency>
-            <groupId>${project.groupId}</groupId>
+            <groupId>${modules.common.groupid}</groupId>
             <artifactId>mindot-viewer</artifactId>
             <version>${modules.common.version}</version>
             <type>jar</type>
         </dependency>
 
         <dependency>
-            <groupId>${project.groupId}</groupId>
+            <groupId>${modules.common.groupid}</groupId>
             <artifactId>mindunit</artifactId>
             <version>${modules.common.version}</version>
             <classifier>bin</classifier>
@@ -112,14 +113,14 @@
         </dependency>
 
         <dependency>
-            <groupId>${project.groupId}</groupId>
+            <groupId>${modules.common.groupid}</groupId>
             <artifactId>iar-extension</artifactId>
             <version>${modules.common.version}</version>
             <type>jar</type>
         </dependency>
         
         <dependency>
-            <groupId>${project.groupId}</groupId>
+            <groupId>${modules.common.groupid}</groupId>
             <artifactId>garbage-composite-annotation</artifactId>
             <version>${modules.common.version}</version>
             <type>jar</type>
