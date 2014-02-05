@@ -19,15 +19,15 @@
             <useTransitiveDependencies>false</useTransitiveDependencies>
             <outputDirectory>ext</outputDirectory>
             <includes>
-                <include>${project.groupId}:adl-frontend-static</include>
-                <include>${project.groupId}:single-interface-plugin</include>
-                <include>${project.groupId}:cpl-preproc-static</include>
-                <include>${project.groupId}:adl-backend-static</include>
-                <include>${project.groupId}:ext-parser</include>
-                <include>${project.groupId}:global-extensions</include>
-                <include>${project.groupId}:dumpdot-annotation</include>
-                <include>${project.groupId}:iar-extension</include>
-                <include>${project.groupId}:garbage-composite-annotation</include>
+                <include>${modules.common.groupid}:adl-frontend-static</include>
+                <include>${modules.common.groupid}:single-interface-plugin</include>
+                <include>${modules.common.groupid}:cpl-preproc-static</include>
+                <include>${modules.common.groupid}:adl-backend-static</include>
+                <include>${modules.common.groupid}:ext-parser</include>
+                <include>${modules.common.groupid}:global-extensions</include>
+                <include>${modules.common.groupid}:dumpdot-annotation</include>
+                <include>${modules.common.groupid}:iar-extension</include>
+                <include>${modules.common.groupid}:garbage-composite-annotation</include>
             </includes>
             <fileMode>0644</fileMode>
         </dependencySet>
@@ -41,7 +41,7 @@
                 </excludes>
             </unpackOptions>
             <includes>
-                <include>${project.groupId}:mindot-viewer</include>
+                <include>${modules.common.groupid}:mindot-viewer</include>
             </includes>
             <fileMode>0644</fileMode>
         </dependencySet>
@@ -50,11 +50,11 @@
  
     <fileSets>
         <fileSet>
-            <directory>target/dependency/mindc-${project.version}</directory>
+            <directory>target/dependency/mindc-${modules.common.version}</directory>
             <outputDirectory />
         </fileSet>
         <fileSet>
-            <directory>target/dependency/mindunit-${project.version}</directory>
+            <directory>target/dependency/mindunit-${modules.common.version}</directory>
             <outputDirectory />
         </fileSet>
     </fileSets>
