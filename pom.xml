@@ -16,27 +16,36 @@
     </description>
     
     <properties>
-        <maven.build.timestamp.format>yyyyMMdd</maven.build.timestamp.format>
         <modules.common.groupid>org.ow2.mind</modules.common.groupid>
         <modules.common.version>2.1-SNAPSHOT</modules.common.version>
-        <release.promotion>Alpha</release.promotion>
+
+        <maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
         <release.buildNumber>${maven.build.timestamp}</release.buildNumber>
+        
+        <!-- Can be overridden by parameter. Accepted values are (case-sensitive):
+            - Development Build
+            - Alpha
+            - Beta
+            - Stable
+        -->
+        <teamforge.release.maturity>Development Build</teamforge.release.maturity>
+
     </properties>
 
     <modules>
-        <module>../mind-compiler</module>
-        <module>../Optimization-Backend/adl-frontend-static</module>
-        <module>../single-interface-plugin</module>
-        <module>../Optimization-Backend/cpl-preproc-static</module>
-        <module>../Optimization-Backend/adl-backend-static</module>
-        <module>../global-extensions/ext-parser</module>
-        <module>../global-extensions/global-extensions</module>
-        <module>../dumpdot-annotation</module>
-        <module>../mindot-viewer</module>
-        <module>../mindunit/mindunit-runtime</module>
-        <module>../mindunit/mindunit</module>
-        <module>../iar-extension</module>
-        <module>../garbage-composite-annotation</module>
+        <module>mind-compiler</module>
+        <module>Optimization-Backend/adl-frontend-static</module>
+        <module>single-interface-plugin</module>
+        <module>Optimization-Backend/cpl-preproc-static</module>
+        <module>Optimization-Backend/adl-backend-static</module>
+        <module>global-extensions/ext-parser</module>
+        <module>global-extensions/global-extensions</module>
+        <module>dumpdot-annotation</module>
+        <module>mindot-viewer</module>
+        <module>mindunit/mindunit-runtime</module>
+        <module>mindunit/mindunit</module>
+        <module>iar-extension</module>
+        <module>garbage-composite-annotation</module>
     </modules>
 
     <dependencies>
@@ -167,7 +176,7 @@
                     <descriptors>
                         <descriptor>src/assemble/bin-release.xml</descriptor>
                      </descriptors>
-                    <finalName>${project.build.finalName}-${release.buildNumber}-${release.promotion}</finalName>
+                    <finalName>${project.build.finalName}-${release.buildNumber}</finalName>
                     <appendAssemblyId>true</appendAssemblyId>
                 </configuration>
                 <executions>
@@ -192,10 +201,8 @@
                     <createRelease>true</createRelease>
                     <pkg>test-mind4se</pkg>
                     <packageDescription>${project.description}</packageDescription>
-                    <!--release>${project.build.finalName}-${release.buildNumber}-${release.promotion}</release-->
                     <release>${project.build.finalName}</release>
-                    <!--releaseMaturity>${release.promotion}</releaseMaturity-->
-                    <releaseMaturity>Development Build</releaseMaturity>
+                    <releaseMaturity>${teamforge.release.maturity}</releaseMaturity>
                     <releaseStatus>active</releaseStatus>
                 </configuration>
                 <executions>
@@ -212,5 +219,42 @@
         </plugins>
 
     </build>
+
+    <profiles>
+        <profile>
+            <id>official-release</id>
+            
+            <properties>
+                <teamforge.release.maturity>Alpha</teamforge.release.maturity>
+            </properties>
+            
+            <build>
+                <plugins>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-assembly-plugin</artifactId>
+                        <configuration>
+                            <finalName>${project.build.finalName}-${release.buildNumber}-${teamforge.release.maturity}</finalName>
+                            <appendAssemblyId>true</appendAssemblyId>
+                        </configuration>
+                    </plugin>
+                    
+                    <plugin>
+                        <groupId>com.maestrodev</groupId>
+                        <artifactId>collabnet-maven-plugin</artifactId>
+                        <configuration>
+                            <release>${project.build.finalName}-${release.buildNumber}-${teamforge.release.maturity}</release>
+                            <releaseDescription>${project.version} ${teamforge.release.maturity} version of MIND4SE compiler.${line.separator}Generated on ${release.buildNumber}.</releaseDescription>
+                            <releaseMaturity>${teamforge.release.maturity}</releaseMaturity>
+                            <releaseStatus>active</releaseStatus>
+                        </configuration>
+                    </plugin>
+
+                </plugins>
+            </build>
+
+        </profile>
+    </profiles>
 
 </project>
