@@ -34,10 +34,7 @@
 
     <modules>
         <module>mind-compiler</module>
-        <module>Optimization-Backend/adl-frontend-static</module>
-        <module>single-interface-plugin</module>
-        <module>Optimization-Backend/cpl-preproc-static</module>
-        <module>Optimization-Backend/adl-backend-static</module>
+        <module>Optimization-Backend</module>
         <module>global-extensions/ext-parser</module>
         <module>global-extensions/global-extensions</module>
         <module>dumpdot-annotation</module>
