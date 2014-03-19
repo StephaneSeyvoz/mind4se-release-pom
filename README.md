@@ -22,6 +22,6 @@ Maven pom project to build a full mind4se release package
 
 ## Build
 
-1. `mvn -s _path/to/settings.xml_ clean install -f ./mind-compiler/pom.xml --projects org.ow2.mind:mind-compiler`
-2. `mvn -s _path/to/settings.xml_ clean install`
-3. `mvn -s _path/to/settings.xml_ deploy -rf com.se.mind:mind4se-compiler -Dartifactory -Dteamforge`
+1. `mvn -s path/to/settings.xml clean install -f ./mind-compiler/pom.xml --projects org.ow2.mind:mind-compiler`
+2. `mvn -s path/to/settings.xml clean install`
+3. `mvn -s path/to/settings.xml deploy -rf com.se.mind:mind4se-compiler -Dartifactory -Dteamforge`
