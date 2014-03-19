@@ -1,257 +1,343 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-    <modelVersion>4.0.0</modelVersion>
+	<modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.se.mind</groupId>
-    <artifactId>mind4se-compiler</artifactId>
-    <version>0.1-SNAPSHOT</version>
-    <name>MIND4SE compiler</name>
-    <packaging>pom</packaging>
+	<groupId>com.se.mind</groupId>
+	<artifactId>mind4se-compiler</artifactId>
+	<version>0.1-SNAPSHOT</version>
+	<name>MIND4SE compiler</name>
+	<packaging>pom</packaging>
 
-    <description>
+	<description>
       MIND4SE compiler is the tool-set that support the development of 
-      component-based software written with the Mind programming model
+      component-based software written with the Mind programming model 
       for Schneider Electric purposes.
-    </description>
-    
-    <properties>
-        <modules.common.groupid>org.ow2.mind</modules.common.groupid>
-        <modules.common.version>2.1-SNAPSHOT</modules.common.version>
+	</description>
 
-        <maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
-        <release.buildNumber>${maven.build.timestamp}</release.buildNumber>
-        
-        <!-- Can be overridden by parameter. Accepted values are (case-sensitive):
-            - Development Build
-            - Alpha
-            - Beta
-            - Stable
-        -->
-        <teamforge.release.maturity>Development Build</teamforge.release.maturity>
+	<ciManagement>
+		<system>jenkins</system>
+		<url>http://qfrwjen1.eur.gad.schneider-electric.com:8180/jenkins</url>
+	</ciManagement>
 
-    </properties>
+	<properties>
+		<modules.common.groupid>org.ow2.mind</modules.common.groupid>
+		<modules.common.version>2.1-SNAPSHOT</modules.common.version>
 
-    <modules>
-        <module>mind-compiler</module>
-        <module>Optimization-Backend</module>
-        <module>global-extensions/ext-parser</module>
-        <module>global-extensions/global-extensions</module>
-        <module>dumpdot-annotation</module>
-        <module>mindot-viewer</module>
-        <module>mindunit/mindunit-runtime</module>
-        <module>mindunit/mindunit</module>
-        <module>iar-extension</module>
-        <module>garbage-composite-annotation</module>
-    </modules>
+		<maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
+		<release.buildNumber>${maven.build.timestamp}</release.buildNumber>
+	</properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>${modules.common.groupid}</groupId>
-            <artifactId>mindc</artifactId>
-            <version>${modules.common.version}</version>
-            <classifier>bin</classifier>
-            <type>zip</type>
-        </dependency>
-        
-        <dependency>
-            <groupId>${modules.common.groupid}</groupId>
-            <artifactId>adl-frontend-static</artifactId>
-            <version>${modules.common.version}</version>
-            <type>jar</type>
-        </dependency>
+	<modules>
+		<module>mind-compiler</module>
+		<module>Optimization-Backend</module>
+		<module>global-extensions/ext-parser</module>
+		<module>global-extensions/global-extensions</module>
+		<module>dumpdot-annotation</module>
+		<module>mindot-viewer</module>
+		<module>mindunit/mindunit-runtime</module>
+		<module>mindunit/mindunit</module>
+		<module>iar-extension</module>
+		<module>garbage-composite-annotation</module>
+	</modules>
 
-        <dependency>
-            <groupId>${modules.common.groupid}</groupId>
-            <artifactId>single-interface-plugin</artifactId>
-            <version>${modules.common.version}</version>
-            <type>jar</type>
-        </dependency>
+	<dependencies>
+		<dependency>
+			<groupId>${modules.common.groupid}</groupId>
+			<artifactId>mindc</artifactId>
+			<version>${modules.common.version}</version>
+			<classifier>bin</classifier>
+			<type>zip</type>
+		</dependency>
 
-        <dependency>
-            <groupId>${modules.common.groupid}</groupId>
-            <artifactId>cpl-preproc-static</artifactId>
-            <version>${modules.common.version}</version>
-            <type>jar</type>
-        </dependency>
+		<dependency>
+			<groupId>${modules.common.groupid}</groupId>
+			<artifactId>adl-frontend-static</artifactId>
+			<version>${modules.common.version}</version>
+			<type>jar</type>
+		</dependency>
 
-        <dependency>
-            <groupId>${modules.common.groupid}</groupId>
-            <artifactId>adl-backend-static</artifactId>
-            <version>${modules.common.version}</version>
-            <type>jar</type>
-        </dependency>
+		<dependency>
+			<groupId>${modules.common.groupid}</groupId>
+			<artifactId>single-interface-plugin</artifactId>
+			<version>${modules.common.version}</version>
+			<type>jar</type>
+		</dependency>
 
-        <dependency>
-            <groupId>${modules.common.groupid}</groupId>
-            <artifactId>ext-parser</artifactId>
-            <version>${modules.common.version}</version>
-            <type>jar</type>
-        </dependency>
+		<dependency>
+			<groupId>${modules.common.groupid}</groupId>
+			<artifactId>cpl-preproc-static</artifactId>
+			<version>${modules.common.version}</version>
+			<type>jar</type>
+		</dependency>
 
-        <dependency>
-            <groupId>${modules.common.groupid}</groupId>
-            <artifactId>global-extensions</artifactId>
-            <version>${modules.common.version}</version>
-            <type>jar</type>
-        </dependency>
+		<dependency>
+			<groupId>${modules.common.groupid}</groupId>
+			<artifactId>adl-backend-static</artifactId>
+			<version>${modules.common.version}</version>
+			<type>jar</type>
+		</dependency>
 
-        <dependency>
-            <groupId>${modules.common.groupid}</groupId>
-            <artifactId>dumpdot-annotation</artifactId>
-            <version>${modules.common.version}</version>
-            <type>jar</type>
-        </dependency>
+		<dependency>
+			<groupId>${modules.common.groupid}</groupId>
+			<artifactId>ext-parser</artifactId>
+			<version>${modules.common.version}</version>
+			<type>jar</type>
+		</dependency>
 
-        <dependency>
-            <groupId>${modules.common.groupid}</groupId>
-            <artifactId>mindot-viewer</artifactId>
-            <version>${modules.common.version}</version>
-            <type>jar</type>
-        </dependency>
+		<dependency>
+			<groupId>${modules.common.groupid}</groupId>
+			<artifactId>global-extensions</artifactId>
+			<version>${modules.common.version}</version>
+			<type>jar</type>
+		</dependency>
 
-        <dependency>
-            <groupId>${modules.common.groupid}</groupId>
-            <artifactId>mindunit</artifactId>
-            <version>${modules.common.version}</version>
-            <classifier>bin</classifier>
-            <type>zip</type>
-        </dependency>
+		<dependency>
+			<groupId>${modules.common.groupid}</groupId>
+			<artifactId>dumpdot-annotation</artifactId>
+			<version>${modules.common.version}</version>
+			<type>jar</type>
+		</dependency>
 
-        <dependency>
-            <groupId>${modules.common.groupid}</groupId>
-            <artifactId>iar-extension</artifactId>
-            <version>${modules.common.version}</version>
-            <type>jar</type>
-        </dependency>
-        
-        <dependency>
-            <groupId>${modules.common.groupid}</groupId>
-            <artifactId>garbage-composite-annotation</artifactId>
-            <version>${modules.common.version}</version>
-            <type>jar</type>
-        </dependency>
+		<dependency>
+			<groupId>${modules.common.groupid}</groupId>
+			<artifactId>mindot-viewer</artifactId>
+			<version>${modules.common.version}</version>
+			<type>jar</type>
+		</dependency>
 
-    </dependencies>
+		<dependency>
+			<groupId>${modules.common.groupid}</groupId>
+			<artifactId>mindunit</artifactId>
+			<version>${modules.common.version}</version>
+			<classifier>bin</classifier>
+			<type>zip</type>
+		</dependency>
 
-    <pluginRepositories>
-        <pluginRepository>
-            <id>maestro-rel</id>
-            <name>Maestro releases</name>
-            <url>https://repo.maestrodev.com/archiva/repository/CollabNet.TeamForge.Plugins.releases</url>
-        </pluginRepository>
-    </pluginRepositories>
-  
-    <build>
+		<dependency>
+			<groupId>${modules.common.groupid}</groupId>
+			<artifactId>iar-extension</artifactId>
+			<version>${modules.common.version}</version>
+			<type>jar</type>
+		</dependency>
 
-        <plugins>
-   
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>2.8</version>
-                <executions>
-                    <execution>
-                        <id>unpack-dependencies</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>unpack-dependencies</goal>
-                        </goals>
-                        <configuration>
-                            <excludeTransitive>true</excludeTransitive>
-                            <includeClassifiers>bin</includeClassifiers>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>2.4</version>
-                <configuration>
-                    <descriptors>
-                        <descriptor>src/assemble/bin-release.xml</descriptor>
-                     </descriptors>
-                    <finalName>${project.build.finalName}-${release.buildNumber}</finalName>
-                    <appendAssemblyId>true</appendAssemblyId>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>make-assembly</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        
-            <plugin>
-                <groupId>com.maestrodev</groupId>
-                <artifactId>collabnet-maven-plugin</artifactId>
-                <version>1.1</version>
-                <configuration>
-                    <project>mind4se</project>
-                    <teamForgeUrl>https://teamforge.schneider-electric.com</teamForgeUrl>
-                    <teamForgeServerId>teamforge.schneider-electric</teamForgeServerId>
-                    <createRelease>true</createRelease>
-                    <pkg>test-mind4se</pkg>
-                    <packageDescription>${project.description}</packageDescription>
-                    <release>${project.build.finalName}</release>
-                    <releaseMaturity>${teamforge.release.maturity}</releaseMaturity>
-                    <releaseStatus>active</releaseStatus>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>collabnet-deploy</id>
-                        <phase>deploy</phase>
-                        <goals>
-                            <goal>deploy-to-releases</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-    
-        </plugins>
+		<dependency>
+			<groupId>${modules.common.groupid}</groupId>
+			<artifactId>garbage-composite-annotation</artifactId>
+			<version>${modules.common.version}</version>
+			<type>jar</type>
+		</dependency>
 
-    </build>
+	</dependencies>
 
-    <profiles>
-        <profile>
-            <id>official-release</id>
-            
-            <properties>
-                <teamforge.release.maturity>Alpha</teamforge.release.maturity>
-            </properties>
-            
-            <build>
-                <plugins>
+	<build>
 
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-assembly-plugin</artifactId>
-                        <configuration>
-                            <finalName>${project.build.finalName}-${release.buildNumber}-${teamforge.release.maturity}</finalName>
-                            <appendAssemblyId>true</appendAssemblyId>
-                        </configuration>
-                    </plugin>
-                    
-                    <plugin>
-                        <groupId>com.maestrodev</groupId>
-                        <artifactId>collabnet-maven-plugin</artifactId>
-                        <configuration>
-                            <release>${project.build.finalName}-${release.buildNumber}-${teamforge.release.maturity}</release>
-                            <releaseDescription>${project.version} ${teamforge.release.maturity} version of MIND4SE compiler.${line.separator}Generated on ${release.buildNumber}.</releaseDescription>
-                            <releaseMaturity>${teamforge.release.maturity}</releaseMaturity>
-                            <releaseStatus>active</releaseStatus>
-                        </configuration>
-                    </plugin>
+		<plugins>
 
-                </plugins>
-            </build>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.8</version>
+				<executions>
+					<execution>
+						<id>unpack-dependencies</id>
+						<phase>package</phase>
+						<goals>
+							<goal>unpack-dependencies</goal>
+						</goals>
+						<configuration>
+							<excludeTransitive>true</excludeTransitive>
+							<includeClassifiers>bin</includeClassifiers>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 
-        </profile>
-    </profiles>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<descriptors>
+						<descriptor>src/assemble/bin-release.xml</descriptor>
+					</descriptors>
+					<finalName>${project.build.finalName}-${release.buildNumber}</finalName>
+					<appendAssemblyId>true</appendAssemblyId>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+
+	</build>
+
+	<profiles>
+
+		<profile>
+			<id>deploy-teamforge</id>
+			<activation>
+				<property>
+					<name>teamforge</name>
+				</property>
+			</activation>
+
+			<properties>
+				<!-- Can be overridden by parameter. Accepted values are (case-sensitive):
+				- Development Build
+				- Alpha
+				- Beta
+				- Stable
+				-->
+				<teamforge.release.maturity>Development Build</teamforge.release.maturity>
+			</properties>
+
+			<pluginRepositories>
+				<pluginRepository>
+					<id>maestro-rel</id>
+					<name>Maestro releases</name>
+					<url>https://repo.maestrodev.com/archiva/repository/public</url>
+				</pluginRepository>
+			</pluginRepositories>
+
+			<build>
+
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<artifactId>maven-deploy-plugin</artifactId>
+							<configuration>
+								<skip>true</skip>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+
+				<plugins>
+					<plugin>
+						<groupId>com.maestrodev</groupId>
+						<artifactId>collabnet-maven-plugin</artifactId>
+						<version>1.4</version>
+						<configuration>
+							<project>mind4se</project>
+							<teamForgeUrl>https://teamforge.schneider-electric.com</teamForgeUrl>
+							<teamForgeServerId>teamforge</teamForgeServerId>
+							<createRelease>true</createRelease>
+							<pkg>test-mind4se</pkg>
+							<packageDescription>${project.description}</packageDescription>
+							<release>${project.build.finalName}</release>
+							<releaseMaturity>${teamforge.release.maturity}</releaseMaturity>
+							<releaseStatus>active</releaseStatus>
+						</configuration>
+						<executions>
+							<execution>
+								<id>collabnet-deploy</id>
+								<phase>deploy</phase>
+								<goals>
+									<goal>deploy-to-releases</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+
+				</plugins>
+
+			</build>
+
+		</profile>
+
+		<profile>
+			<id>official-teamforge-release</id>
+
+			<properties>
+				<teamforge.release.maturity>Alpha</teamforge.release.maturity>
+			</properties>
+
+			<pluginRepositories>
+				<pluginRepository>
+					<id>maestro-rel</id>
+					<name>Maestro releases</name>
+					<url>https://repo.maestrodev.com/archiva/repository/public</url>
+				</pluginRepository>
+			</pluginRepositories>
+
+			<build>
+				<plugins>
+
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-assembly-plugin</artifactId>
+						<configuration>
+							<finalName>${project.build.finalName}-${release.buildNumber}-${teamforge.release.maturity}</finalName>
+							<appendAssemblyId>true</appendAssemblyId>
+						</configuration>
+					</plugin>
+
+					<plugin>
+						<groupId>com.maestrodev</groupId>
+						<artifactId>collabnet-maven-plugin</artifactId>
+						<configuration>
+							<release>${project.build.finalName}-${release.buildNumber}-${teamforge.release.maturity}</release>
+							<releaseDescription>${project.version} ${teamforge.release.maturity} version of MIND4SE compiler.${line.separator}Generated on ${release.buildNumber}.</releaseDescription>
+							<releaseMaturity>${teamforge.release.maturity}</releaseMaturity>
+							<releaseStatus>active</releaseStatus>
+						</configuration>
+					</plugin>
+
+				</plugins>
+			</build>
+
+		</profile>
+
+		<profile>
+			<id>deploy-artifactory</id>
+			<activation>
+				<property>
+					<name>artifactory</name>
+				</property>
+			</activation>
+
+			<distributionManagement>
+				<repository>
+					<uniqueVersion>true</uniqueVersion>
+					<id>artifactory</id>
+					<name>Artifactory repository</name>
+					<url>http://qfrwjen1.eur.gad.schneider-electric.com:8180/artifactory/libs-release-local</url>
+					<layout>default</layout>
+				</repository>
+				<snapshotRepository>
+					<uniqueVersion>false</uniqueVersion>
+					<id>artifactory</id>
+					<name>Artifactory repository</name>
+					<url>http://qfrwjen1.eur.gad.schneider-electric.com:8180/artifactory/libs-snapshot-local</url>
+					<layout>default</layout>
+				</snapshotRepository>
+			</distributionManagement>
+
+			<build>
+
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<artifactId>maven-deploy-plugin</artifactId>
+							<configuration>
+								<skip>false</skip>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+
+			</build>
+
+		</profile>
+
+	</profiles>
 
 </project>
