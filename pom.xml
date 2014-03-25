@@ -39,8 +39,8 @@
 		<module>mindunit/mindunit</module>
 		<module>iar-extension</module>
 		<module>garbage-composite-annotation</module>
-		<!--module>mindoc</module>
-		<module>mind-cpp</module-->
+		<module>mindoc</module>
+		<module>mind-cpp</module>
 	</modules>
 
 	<dependencies>
