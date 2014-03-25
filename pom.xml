@@ -258,7 +258,7 @@
 						<executions>
 							<execution>
 								<id>collabnet-deploy</id>
-								<phase>deploy</phase>
+								<!--phase>deploy</phase-->
 								<goals>
 									<goal>deploy-to-releases</goal>
 								</goals>
@@ -279,14 +279,6 @@
 			<properties>
 				<teamforge.release.maturity>Alpha</teamforge.release.maturity>
 			</properties>
-
-			<pluginRepositories>
-				<pluginRepository>
-					<id>maestro-rel</id>
-					<name>Maestro releases</name>
-					<url>https://repo.maestrodev.com/archiva/repository/public</url>
-				</pluginRepository>
-			</pluginRepositories>
 
 			<build>
 				<plugins>
