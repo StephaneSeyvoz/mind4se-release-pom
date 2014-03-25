@@ -23,6 +23,7 @@
 	<properties>
 		<modules.common.groupid>org.ow2.mind</modules.common.groupid>
 		<modules.common.version>2.1-SNAPSHOT</modules.common.version>
+		<modules.cpp.version>0.1.0-SNAPSHOT</modules.cpp.version>
 
 		<maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
 		<release.buildNumber>${maven.build.timestamp}</release.buildNumber>
@@ -128,6 +129,22 @@
 			<artifactId>garbage-composite-annotation</artifactId>
 			<version>${modules.common.version}</version>
 			<type>jar</type>
+		</dependency>
+		
+		<dependency>
+			<groupId>${modules.common.groupid}</groupId>
+			<artifactId>mindoc</artifactId>
+			<version>${modules.common.version}</version>
+			<classifier>bin</classifier>
+			<type>zip</type>
+		</dependency>
+
+		<dependency>
+			<groupId>${modules.common.groupid}</groupId>
+			<artifactId>mindcpp</artifactId>
+			<version>${modules.cpp.version}</version>
+			<classifier>bin</classifier>
+			<type>zip</type>
 		</dependency>
 
 	</dependencies>

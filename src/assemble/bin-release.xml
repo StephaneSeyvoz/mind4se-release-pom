@@ -57,6 +57,14 @@
             <directory>target/dependency/mindunit-${modules.common.version}</directory>
             <outputDirectory />
         </fileSet>
+        <fileSet>
+            <directory>target/dependency/mindoc-${modules.common.version}</directory>
+            <outputDirectory />
+        </fileSet>
+        <fileSet>
+            <directory>target/dependency/mindcpp-${modules.cpp.version}</directory>
+            <outputDirectory />
+        </fileSet>
     </fileSets>
     
     <files>
