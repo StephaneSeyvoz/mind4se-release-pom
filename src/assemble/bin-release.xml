@@ -2,82 +2,88 @@
     xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2 http://maven.apache.org/xsd/assembly-1.1.2.xsd">
-    
-    <id>bin</id>
-    
-    <formats>
-        <!--format>dir</format-->
-        <format>zip</format>
-        <format>tar.gz</format>
-        <format>tar.bz2</format>
-    </formats>
-    <includeBaseDirectory>true</includeBaseDirectory>
-    <!--baseDirectory>${project.build.finalName}-${release.buildNumber}-${release.promotion}</baseDirectory-->
-    
-    <dependencySets>
-        <dependencySet>
-            <useTransitiveDependencies>false</useTransitiveDependencies>
-            <outputDirectory>ext</outputDirectory>
-            <includes>
-                <include>${modules.common.groupid}:adl-frontend-static</include>
-                <include>${modules.common.groupid}:single-interface-plugin</include>
-                <include>${modules.common.groupid}:cpl-preproc-static</include>
-                <include>${modules.common.groupid}:adl-backend-static</include>
-                <include>${modules.common.groupid}:ext-parser</include>
-                <include>${modules.common.groupid}:global-extensions</include>
-                <include>${modules.common.groupid}:dumpdot-annotation</include>
-                <include>${modules.common.groupid}:iar-extension</include>
-                <include>${modules.common.groupid}:garbage-composite-annotation</include>
-            </includes>
-            <fileMode>0644</fileMode>
-        </dependencySet>
 
-        <dependencySet>
-            <useTransitiveDependencies>false</useTransitiveDependencies>
-            <unpack>true</unpack>
-            <unpackOptions>
-                <excludes>
-                    <exclude>META-INF/**</exclude>
-                </excludes>
-            </unpackOptions>
-            <includes>
-                <include>${modules.common.groupid}:mindot-viewer</include>
-            </includes>
-            <fileMode>0644</fileMode>
-        </dependencySet>
+	<id>bin</id>
 
-    </dependencySets>
- 
-    <fileSets>
-        <fileSet>
-            <directory>target/dependency/mindc-${modules.common.version}</directory>
-            <outputDirectory />
-        </fileSet>
-        <fileSet>
-            <directory>target/dependency/mindunit-${modules.common.version}</directory>
-            <outputDirectory />
-        </fileSet>
-        <fileSet>
-            <directory>target/dependency/mindoc-${modules.common.version}</directory>
-            <outputDirectory />
-        </fileSet>
-        <fileSet>
-            <directory>target/dependency/mindcpp-${modules.cpp.version}</directory>
-            <outputDirectory />
-        </fileSet>
-    </fileSets>
-    
-    <files>
-        <file>
-            <source>src/assemble/resources/Factory.adl</source>
-            <outputDirectory>runtime</outputDirectory>
-            <fileMode>0644</fileMode>
-        </file>
-        <file>
-            <source>src/assemble/resources/manifest.xml</source>
-            <outputDirectory>manifest</outputDirectory>
-            <fileMode>0644</fileMode>
-        </file>
-    </files>
+	<formats>
+		<!--format>dir</format-->
+		<format>zip</format>
+		<format>tar.gz</format>
+		<format>tar.bz2</format>
+	</formats>
+	<includeBaseDirectory>true</includeBaseDirectory>
+	<!--baseDirectory>${project.build.finalName}-${release.buildNumber}-${release.promotion}</baseDirectory-->
+
+	<dependencySets>
+		<dependencySet>
+			<useTransitiveDependencies>false</useTransitiveDependencies>
+			<outputDirectory>ext</outputDirectory>
+			<includes>
+				<include>${modules.common.groupid}:adl-frontend-static</include>
+				<include>${modules.common.groupid}:single-interface-plugin</include>
+				<include>${modules.common.groupid}:cpl-preproc-static</include>
+				<include>${modules.common.groupid}:adl-backend-static</include>
+				<include>${modules.common.groupid}:ext-parser</include>
+				<include>${modules.common.groupid}:global-extensions</include>
+				<include>${modules.common.groupid}:dumpdot-annotation</include>
+				<include>${modules.common.groupid}:iar-extension</include>
+				<include>${modules.common.groupid}:garbage-composite-annotation</include>
+			</includes>
+			<fileMode>0644</fileMode>
+		</dependencySet>
+
+		<dependencySet>
+			<useTransitiveDependencies>false</useTransitiveDependencies>
+			<unpack>true</unpack>
+			<unpackOptions>
+				<excludes>
+					<exclude>META-INF/**</exclude>
+				</excludes>
+			</unpackOptions>
+			<includes>
+				<include>${modules.common.groupid}:mindot-viewer</include>
+			</includes>
+			<fileMode>0644</fileMode>
+		</dependencySet>
+
+	</dependencySets>
+
+	<fileSets>
+		<fileSet>
+			<directory>src/assemble/resources/examples</directory>
+			<filtered>false</filtered>
+			<outputDirectory>examples</outputDirectory>
+			<fileMode>0644</fileMode>
+		</fileSet>
+		<fileSet>
+			<directory>target/dependency/mindc-${modules.common.version}</directory>
+			<outputDirectory />
+		</fileSet>
+		<fileSet>
+			<directory>target/dependency/mindunit-${modules.common.version}</directory>
+			<outputDirectory />
+		</fileSet>
+		<fileSet>
+			<directory>target/dependency/mindoc-${modules.common.version}</directory>
+			<outputDirectory />
+		</fileSet>
+		<fileSet>
+			<directory>target/dependency/mindcpp-${modules.cpp.version}</directory>
+			<outputDirectory />
+		</fileSet>
+	</fileSets>
+
+	<files>
+		<file>
+			<source>src/assemble/resources/Factory.adl</source>
+			<outputDirectory>runtime</outputDirectory>
+			<fileMode>0644</fileMode>
+		</file>
+		<file>
+			<source>src/assemble/resources/manifest.xml</source>
+			<outputDirectory>manifest</outputDirectory>
+			<fileMode>0644</fileMode>
+		</file>
+	</files>
 
 </assembly>
