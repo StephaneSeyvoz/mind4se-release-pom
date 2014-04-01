@@ -304,7 +304,7 @@
 						<executions>
 							<execution>
 								<id>collabnet-deploy</id>
-								<!--phase>deploy</phase-->
+								<phase>deploy</phase>
 								<goals>
 									<goal>deploy-to-releases</goal>
 								</goals>
